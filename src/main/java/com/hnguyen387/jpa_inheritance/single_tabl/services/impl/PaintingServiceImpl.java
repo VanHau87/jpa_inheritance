@@ -8,6 +8,7 @@ import com.hnguyen387.jpa_inheritance.single_tabl.dtos.PaintingDTO;
 import com.hnguyen387.jpa_inheritance.single_tabl.models.Painting;
 import com.hnguyen387.jpa_inheritance.single_tabl.repos.PaintingRepository;
 import com.hnguyen387.jpa_inheritance.single_tabl.services.PaintingService;
+import com.hnguyen387.jpa_inheritance.single_tabl.utils.PaintingTechnique;
 
 @Service
 public class PaintingServiceImpl implements PaintingService{
@@ -18,6 +19,7 @@ public class PaintingServiceImpl implements PaintingService{
 	public PaintingDTO createPainting(PaintingDTO dto) {
 		Painting painting = new Painting();
 		BeanUtils.copyProperties(dto, painting);
+		painting.setPaintingTechnique(PaintingTechnique.valueOf(dto.getPaintingTechnique()));
 		Painting savedPainting = repository.save(painting);
 		BeanUtils.copyProperties(savedPainting, dto);
 		return dto;

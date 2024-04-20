@@ -1,8 +1,9 @@
 package com.hnguyen387.jpa_inheritance.single_tabl.repos;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface PaintingRepository extends ArtPieceRepository{
+import com.hnguyen387.jpa_inheritance.single_tabl.models.Painting;
+
+public interface PaintingRepository extends JpaRepository<Painting, Integer>{
 
 }
